@@ -1,0 +1,31 @@
+[project]
+name = "smart-pot"
+version = "0.1.0"
+description = "AI 스마트 화분 — 표정 캐릭터 + 식물 센서 + AI 스피커"
+requires-python = ">=3.11"
+
+dependencies = [
+    "openai-whisper>=20231117",
+    "sounddevice>=0.4.6",
+    "soundfile>=0.12.1",
+    "numpy>=1.26.0",
+    "requests>=2.31.0",
+    "pyttsx3>=2.90",
+    "pygame>=2.5.0",
+    "pillow>=10.0.0",
+    # 아래는 라즈베리파이 전용 — PC에서는 자동으로 시뮬레이션 모드로 동작
+    "luma.oled>=3.13.0; sys_platform == 'linux'",
+    "luma.core>=2.4.0; sys_platform == 'linux'",
+    "adafruit-circuitpython-dht>=4.0.0; sys_platform == 'linux'",
+    "adafruit-circuitpython-bh1750>=1.1.0; sys_platform == 'linux'",
+    "spidev>=3.6; sys_platform == 'linux'",
+    "RPi.GPIO>=0.7.1; sys_platform == 'linux'",
+]
+
+[project.scripts]
+smart-pot = "main:main"
+
+[dependency-groups]
+dev = [
+    "ruff>=0.4.0",
+]
