@@ -2,13 +2,19 @@
 
 AI 스마트 화분 프로토타입
 
+> 프로젝트 배경(왜 만들었는지, 지금까지의 결정사항)은 [PROJECT.md](./PROJECT.md) 참고.
+
 ## 시작하기
 
 ```bash
 # 1. 환경 세팅 (최초 1회)
 uv sync
 
-# 2. 실행
+# 2. Ollama 로컬 LLM 서버 실행 (AI 스피커 기능용)
+ollama serve
+ollama pull gemma4   # config.py의 OLLAMA_MODEL과 동일한 모델
+
+# 3. 실행
 uv run python main.py
 ```
 
@@ -19,4 +25,6 @@ uv run python main.py
 
 ## config.py 필수 설정
 
-- `OPENAI_API_KEY` — OpenAI API 키 입력
+- `OLLAMA_HOST` — Ollama 서버 주소 (기본값 `http://localhost:11434`)
+- `OLLAMA_MODEL` — 사용할 로컬 모델명 (기본값 `gemma4`)
+- OpenAI API 키는 필요하지 않습니다 (AI 스피커는 로컬 Ollama + Whisper + Piper로 동작)
